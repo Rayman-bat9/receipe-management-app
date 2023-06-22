@@ -12,24 +12,25 @@ function RecipeList({ items, setFavoriteRecipes, setRecipeId }) {
     <div className="Recipes">
       <ul className="recipes-list">
         {items.map((item) => (
-          <div>
+          <div key={item.id}>
             <div
               tabIndex={0}
               role="button"
               onClick={() => {
-                setRecipeId(item.id - 1);
+                setRecipeId(item.id);
                 navigate(`/recipes/${item.id}`);
               }}
             >
               <Recipe
                 title={item.title}
-                ingredients={item.ingredients}
+                ingredients={[]}
                 key={item.id}
-                addToFavorites={setFavoriteRecipes}
+                setRecipeId={setRecipeId}
               />
             </div>
             <div className="recipe-footer-panel">
               <button onClick={() => setFavoriteRecipes(item)} className="fav-button">Добавить в избраное</button>
+              <button className="fav-button">⭐</button>
             </div>
           </div>
         ))}

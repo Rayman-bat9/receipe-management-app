@@ -12,6 +12,7 @@ function App() {
   const [recipes] = useState(arrayRecipes);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [recipeId, setRecipeId] = useState(0);
+  const updateAccess = true;
 
   const addToFavorite = (item) => {
     if (!favoriteRecipes.includes(item)) {
@@ -22,6 +23,16 @@ function App() {
   const removeFromFavorite = (item) => {
     const filteredRecipes = favoriteRecipes.filter((recipe) => recipe !== item);
     setFavoriteRecipes(filteredRecipes);
+  };
+
+  const updateRecipe = (recipe) => {
+    const updatedRecipes = favoriteRecipes.map((favoriteRecipe) => {
+      if (favoriteRecipe.id === recipe.id) {
+        return recipe;
+      }
+      return favoriteRecipe;
+    });
+    setFavoriteRecipes(updatedRecipes);
   };
 
   return (
@@ -47,7 +58,20 @@ function App() {
             path="/recipes/:id"
             element={(
               <RecipeItemPage
-                recipe={recipes[recipeId]}
+                recipe={recipes.filter((recipe) => recipe.id === recipeId)[0]}
+                pathTo="/"
+                updateAccess={false}
+              />
+)}
+          />
+          <Route
+            path="/favorite-recipes/:id"
+            element={(
+              <RecipeItemPage
+                recipe={favoriteRecipes.filter((recipe) => recipe.id === recipeId)[0]}
+                pathTo="/favorite-recipes/"
+                updateAccess={updateAccess}
+                updateRecipe={updateRecipe}
               />
 )}
           />
@@ -57,6 +81,7 @@ function App() {
               <FavoriteRecipesList
                 items={favoriteRecipes}
                 removeFromFavorite={removeFromFavorite}
+                setRecipeId={setRecipeId}
               />
 )}
           />

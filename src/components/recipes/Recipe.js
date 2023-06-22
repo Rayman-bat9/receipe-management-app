@@ -20,7 +20,9 @@ function Recipe({ title, ingredients }) {
     <div>
       <div className="recipe-block">
         <img src="https://minecraft-max.net/upload/iblock/56b/56bd08b34625bdd4434f2e34d965cd57.png" alt="chicken" className="recipe-img" />
-        <h2>{title}</h2>
+        <h2>
+          {title}
+        </h2>
         <IngredientList ingredients={ingredients} />
         <div className="count-likes">
           <button onClick={addLike} className="like-button">{`${countLikes}👍`}</button>
