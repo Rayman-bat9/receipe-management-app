@@ -5,6 +5,7 @@ const arrayRecipes = [
     ingredients: ['Творог (не жирный, сухой) - 250г', 'Масло сливочное (размягчённое) -80 г', 'Яйцо - 1 шт.'],
     intructions: 'dsadasd',
     changed: false,
+    favorite: false,
     id: 1,
   },
   {
@@ -13,6 +14,7 @@ const arrayRecipes = [
     ingredients: ['Творог (не жирный, сухой) - 250г', 'Масло сливочное (размягчённое) -80 г', 'Яйцо - 1 шт.'],
     intructions: 'dsadasd',
     changed: false,
+    favorite: false,
     id: 2,
   },
   {
@@ -21,6 +23,7 @@ const arrayRecipes = [
     ingredients: ['Творог (не жирный, сухой) - 250г', 'Масло сливочное (размягчённое) -80 г', 'Яйцо - 1 шт.'],
     intructions: 'dsadasd',
     changed: false,
+    favorite: false,
     id: 3,
   },
   {
@@ -29,6 +32,7 @@ const arrayRecipes = [
     ingredients: ['Творог (не жирный, сухой) - 250г', 'Масло сливочное (размягчённое) -80 г', 'Яйцо - 1 шт.'],
     intructions: 'dsadasd',
     changed: false,
+    favorite: false,
     id: 4,
   },
   {
@@ -37,6 +41,7 @@ const arrayRecipes = [
     ingredients: ['Творог (не жирный, сухой) - 250г', 'Масло сливочное (размягчённое) -80 г', 'Яйцо - 1 шт.'],
     intructions: 'dsadasd',
     changed: false,
+    favorite: false,
     id: 5,
   },
 ];

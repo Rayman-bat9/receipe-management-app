@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import IngredientList from './ingredients/IngredientsList';
 
 function RecipeItemPage({
-  recipe, updateRecipe, updateAccess, pathTo,
+  updateRecipe, updateAccess, pathTo, recipes,
 }) {
+  const { id } = useParams();
+  const recipe = recipes.find((recp) => recp.id === Number(id));
   const navigate = useNavigate();
   const [editingStage, setEditingStage] = useState(false);
   const [updatedRecipe, setUpdatedRecipe] = useState(recipe);

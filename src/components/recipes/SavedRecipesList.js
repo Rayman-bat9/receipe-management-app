@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Recipe from './Recipe';
 
-function FavoriteRecipesList({ items, removeFromFavorite, setRecipeId }) {
+function SavedRecipesList({ items, removeFromSaved, removeFromFavorites }) {
   // const [recipeList] = useState([{name: "Ватрушки на кефире, с творогом, клубникой и штрейзелем",
   // ingredients: ["Кефир - 160 мл", "Желтки (1С) - 2 шт.","Масло сливочное (размягчённое)
   // - 30 г"]}]);
@@ -18,21 +18,32 @@ function FavoriteRecipesList({ items, removeFromFavorite, setRecipeId }) {
                   tabIndex={0}
                   role="button"
                   onClick={() => {
-                    setRecipeId(item.id);
-                    navigate(`/favorite-recipes/${item.id}`);
+                    navigate(`/saved-recipes/${item.id}`);
                   }}
                 >
-                  <Recipe title={item.title} ingredients={item.ingredients} key={item.id} />
+                  <Recipe
+                    title={item.title}
+                    ingredients={item.ingredients}
+                    key={item.id}
+                    favorite={item.favorite}
+                  />
                 </div>
                 <div className="recipe-footer-panel">
-                  <button onClick={() => removeFromFavorite(item)} className="remove-fav-button">Удалить из избраного</button>
+                  <button onClick={() => removeFromSaved(item.id)} className="remove-fav-button">Удалить из сохраненных</button>
+                  {item.favorite && (
+                  <button
+                    onClick={() => removeFromFavorites(item)}
+                  >
+                    Удалить из избранного
+                  </button>
+                  )}
                 </div>
               </div>
             ))}
           </ul>
-        ) : <h2>Список избранных рецептов пустой!</h2>}
+        ) : <h2>Список сохраненных рецептов пустой!</h2>}
     </div>
   );
 }
 
-export default FavoriteRecipesList;
+export default SavedRecipesList;
